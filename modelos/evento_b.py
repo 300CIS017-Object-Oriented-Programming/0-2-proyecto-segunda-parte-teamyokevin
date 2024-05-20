@@ -1,5 +1,5 @@
-import Boleteria
-import streamlit as st
+import boleteria_b
+import streamlit
 
 class GestorEventos:
     def __init__(self):
@@ -167,25 +167,49 @@ class EventoBar(Evento):
 
 
 class EventoTeatro(Evento):
-    def __init__(self, nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total,precio_boleta, artistas):
+    def __init__(self, nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total,precio_boleta, artistas, valor_alquiler):
         super().__init__(nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total,precio_boleta, artistas)
+        self.__valor_alquiler = valor_alquiler
+
+    # Getters
+    @property
+    def valor_alquiler(self):
+        return self.__valor_alquiler
+
+    # Setters
+    @valor_alquiler.setter
+    def valor_alquiler(self, valor_alquiler):
+        self.__valor_alquiler = valor_alquiler
 
     # Metodos
 
-    def calcular_ingresos(self):
-        if self.precio_boleta2 == []:
-            raise ValueError("No se encontraron  boletas para el evento")
-
-        suma_precios = sum(precio.precio for precio in self.precio_boleta2)
-
-        print(suma_precios)
-
-        if suma_precios <= 0:
-            raise ValueError("No se encontraron  boletas para el evento")
+    # def calcular_ingresos(self):
+    #     if self.precio_boleta2 == []:
+    #         raise ValueError("No se encontraron  boletas para el evento")
+    #
+    #     suma_precios = sum(precio.precio for precio in self.precio_boleta2)
+    #
+    #     print(suma_precios)
+    #
+    #     if suma_precios <= 0:
+    #         raise ValueError("No se encontraron  boletas para el evento")
 
 
 class EventoFilantropico(Evento):
-    pass
+    def __init__(self, nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total, precio_boleta, artistas, patrocinadores):
+        super().__init__(nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total,precio_boleta, artistas)
+        self.__patrocinadores = patrocinadores
+
+
+    # Getters
+    @property
+    def patrocinadores(self):
+        return self.__patrocinadores
+
+    # Setters
+    @patrocinadores.setter
+    def patrocinadores(self, patrocinadores):
+        self.__patrocinadores = patrocinadores
 
 
 
@@ -202,7 +226,3 @@ class EventoFilantropico(Evento):
 # #Evento2 = Evento("Festival", "12/12/2021", "6:00 PM", "8:00 PM", "Estadio", "Calle 123", "Bogota", "realizado", 1000, [Boleteria.PrecioBoleta("VIP", "Preventa", 100000), Boleteria.PrecioBoleta("General", "Preventa", 50000)])
 #
 # Evento1.calcular_ingresos()
-
-
-
-
