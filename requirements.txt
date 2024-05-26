@@ -4,3 +4,5 @@ streamlit-autorefresh==1.0.1
 bcrypt==3.2.0
 scikit-learn==1.4.2
 reportlab
+plotly==5.3.1
+xlsxwriter==3.0.2

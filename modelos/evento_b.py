@@ -23,6 +23,7 @@ class Evento:
         self.__estado = estado
         self.__artistas = artistas
 
+
     def __str__(self):
         return f"Nombre: {self.__nombre}\nFecha: {self.__fecha}\nHora de apertura: {self.__hora_apertura}\nHora de show: {self.__hora_show}\nLugar: {self.__lugar}\nDireccion: {self.__direccion}\nCiudad: {self.__ciudad}\nPrecios: {self.__precio_boleta}\nAforo total: {self.__aforo_total}\nEstado: {self.__estado}\nArtistas: {self.__artistas}"
 
@@ -73,6 +74,8 @@ class Evento:
     def artistas(self):
         return self.__artistas
 
+
+
     # Setters
     @nombre.setter
     def nombre(self, nombre):
@@ -121,6 +124,7 @@ class Evento:
     def artistas(self, artistas):
         self.__artistas = artistas
 
+
     #Metodos
 
 
@@ -154,16 +158,16 @@ class EventoBar(Evento):
 
     # Metodos
 
-    def calcular_ingresos(self):
-        if self.precio_boleta2 == []:
-            raise ValueError("No se encontraron  boletas para el evento")
-
-        suma_precios = sum(precio.precio for precio in self.precio_boleta2)
-
-        print(suma_precios)
-
-        if suma_precios <= 0:
-            raise ValueError("No se encontraron  boletas para el evento")
+    # def calcular_ingresos(self):
+    #     if self.precio_boleta2 == []:
+    #         raise ValueError("No se encontraron  boletas para el evento")
+    #
+    #     suma_precios = sum(precio.precio for precio in self.precio_boleta2)
+    #
+    #     print(suma_precios)
+    #
+    #     if suma_precios <= 0:
+    #         raise ValueError("No se encontraron  boletas para el evento")
 
 
 class EventoTeatro(Evento):
@@ -196,9 +200,10 @@ class EventoTeatro(Evento):
 
 
 class EventoFilantropico(Evento):
-    def __init__(self, nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total, precio_boleta, artistas, patrocinadores):
+    def __init__(self, nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total, precio_boleta, artistas, patrocinadores, patrocinadores_valor_aportado):
         super().__init__(nombre, fecha, hora_apertura, hora_show, lugar, direccion, ciudad, estado, aforo_total,precio_boleta, artistas)
         self.__patrocinadores = patrocinadores
+        self.__patrocinadores_valor_aportado = patrocinadores_valor_aportado
 
 
     # Getters
@@ -206,10 +211,31 @@ class EventoFilantropico(Evento):
     def patrocinadores(self):
         return self.__patrocinadores
 
+    @property
+    def patrocinadores_valor_aportado(self):
+        return self.__patrocinadores_valor_aportado
+
     # Setters
     @patrocinadores.setter
     def patrocinadores(self, patrocinadores):
         self.__patrocinadores = patrocinadores
+
+    @patrocinadores_valor_aportado.setter
+    def patrocinadores_valor_aportado(self, patrocinadores_valor_aportado):
+        self.__patrocinadores_valor_aportado = patrocinadores_valor_aportado
+
+    # Metodos
+
+    # def calcular_ingresos(self):
+    #     if self.precio_boleta == []:
+    #         raise ValueError("No se encontraron  boletas para el evento")
+    #
+    #     suma_precios = sum(precio.precio for precio in self.precio_boleta2)
+    #
+    #     print(suma_precios)
+    #
+    #     if suma_precios <= 0:
+    #         raise ValueError("No se encontraron  boletas para el evento")
 
 
 
